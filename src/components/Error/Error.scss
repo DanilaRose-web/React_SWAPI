@@ -1,0 +1,31 @@
+.ErrorMessage {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   width: 100%;
+
+   .img {
+      max-width: 170px;
+      width: 100%;
+      img {
+         max-width: 100%;
+         height: auto;
+      }
+   }
+
+   .message {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 130%;
+      text-align: center;
+      max-width: 300px;
+      span {
+         margin-bottom: 10px;
+         display: inline-block;
+         font-size: 25px;
+         font-weight: 900;
+         color: #5e62b0;
+      }
+   }
+}

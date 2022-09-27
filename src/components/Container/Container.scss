@@ -1,0 +1,8 @@
+.Container {
+   margin: 40px 0;
+   display: grid;
+   grid-template-columns: 0.8fr 1.2fr;
+   grid-template-rows: auto;
+   align-items: start;
+   gap: 40px;
+}

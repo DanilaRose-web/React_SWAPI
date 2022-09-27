@@ -1,0 +1,13 @@
+.ItemList {
+   ul {
+      li {
+         padding: 8px 15px;
+         font-size: 17px;
+         font-weight: 500;
+         cursor: pointer;
+         &:hover {
+            background: #dc307c;
+         }
+      }
+   }
+}
