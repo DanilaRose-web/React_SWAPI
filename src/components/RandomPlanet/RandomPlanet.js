@@ -60,11 +60,11 @@ export default class RandomPlanet extends Component {
 
 const RandomPlanetView = ({ planet }) => {
 
-   const { id, name, population, diameter, rotationPeriod, climate, terrain } = planet
+   const { name, image, population, diameter, rotationPeriod, climate, terrain } = planet
 
    return (
       <React.Fragment>
-         <div div className="img"> <img src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} alt={name} /></div >
+         <div div className="img"> <img src={image} alt={name} /></div >
          <div className="planet-info">
             <h2 className="planet-name">{name}</h2>
             <List htmlClass={'random-planet-list'}>

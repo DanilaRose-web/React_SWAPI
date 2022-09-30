@@ -1,8 +1,6 @@
 import React  from "react";
 import './ItemList.scss'
 import GlassContainer from "../GlassContainer/GlassContainer";
-import SwapiService from "../../api/SwapiService";
-import ItemListHOC from "../../HOCcomponents/ItemListHOC";
 
 
 const ItemList = (props) => {
@@ -32,5 +30,4 @@ const ItemList = (props) => {
    )
 }
 
-const swapi = new SwapiService();
-export default ItemListHOC(ItemList, swapi.getAllPlanets)
+export default ItemList

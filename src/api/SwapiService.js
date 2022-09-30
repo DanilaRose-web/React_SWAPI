@@ -1,5 +1,6 @@
 export default class SwapiService {
    _apiBaseUrl = 'https://swapi.dev/api/';
+   _imageBaseUrl = 'https://starwars-visualguide.com/assets/img/';
 
    getSwapiResourse = async (url) => {
       const res = await fetch(`${this._apiBaseUrl}${url}`)
@@ -57,7 +58,8 @@ export default class SwapiService {
          orbitalPeriod: planet.orbital_period,
          population: planet.population,
          rotationPeriod: planet.rotation_period,
-         terrain: planet.terrain
+         terrain: planet.terrain,
+         image: `${this._imageBaseUrl}planets/${this._extractId(planet.url)}.jpg`
       }
    }
 
@@ -70,6 +72,7 @@ export default class SwapiService {
          mass: person.mass,
          height: person.height,
          skinColor: person.skin_color,
+         image: `${this._imageBaseUrl}characters/${this._extractId(person.url)}.jpg`
       }
    }
 
@@ -83,6 +86,7 @@ export default class SwapiService {
          costInCredits: starship.cost_in_credits,
          consumables: starship.consumables,
          passengers: starship.passengers, 
+         image: `${this._imageBaseUrl}starships/${this._extractId(starship.url)}.jpg`
       }
    }
 }

@@ -3,9 +3,7 @@ import './ItemDetails.scss'
 import GlassContainer from '../GlassContainer/GlassContainer'
 import List from "../List/List";
 import Preloader from "../Preloader/Preloader";
-import SwapiService from "../../api/SwapiService";
 import ErrorMessage from "../Error/Error";
-import ItemDetailsHOC from "../../HOCcomponents/ItemDetailsHOC";
 
 const ItemDetails = (props) => {
    const { data, loading, error, startMessage, children } = props
@@ -26,20 +24,20 @@ const ItemDetails = (props) => {
 }
 
 const ItemDetailsView = ({ children, data }) => {
-   console.log(children);
 
-   const { id, name, diameter, orbitalPeriod, rotationPeriod, terrain, climate, population } = data
+   const { name, image } = data
 
    return (
       <React.Fragment>
-         <div className="item-img"><img src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} alt="Earth" /></div>
+         <div className="item-img"><img src={image} alt="Earth" /></div>
          <div className="item-info">
             <h2 className="item-name">{name}</h2>
             <List>
-               <li>Terrain: <span>{terrain}</span></li>
-               <li>Climate: <span>{climate}</span></li>
-               <li>Population: <span>{population}</span></li>
-               {/* {children} */}
+               {
+                  React.Children.map(children, (child) => {
+                     return React.cloneElement(child, {data})
+                  })
+               }
             </List>
          </div>
       </React.Fragment>
@@ -52,15 +50,13 @@ const NoItemSelectedMessage = () => {
    )
 }
 
-const ItemDetailsFieldsView = (item, fieldName, fieldValue) => {
-   return (
-      <li>{fieldName}: <span>{fieldValue}</span></li>
+const ItemDetailsFieldsView = ({data, fieldName, fieldValue}) => {
+   
+   return ( 
+      <li>{fieldName}: <span>{data[fieldValue]}</span></li>
    )
 }
 
 export { ItemDetailsFieldsView }
 
-
-
-const swapiApi = new SwapiService()
-export default ItemDetailsHOC(ItemDetails, swapiApi.getPlanet)
+export default ItemDetails

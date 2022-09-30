@@ -1,6 +1,6 @@
 import React from "react"
 
-const ItemDetailsHOC = (Component, getData) => {
+const ItemDetailsHOC = (Component) => {
 
    return class extends React.Component {
 
@@ -35,7 +35,9 @@ const ItemDetailsHOC = (Component, getData) => {
       }
 
       getItemDetails = () => {
-         getData(this.props.itemId)
+         const { swapiApi, getData} = this.props
+
+         swapiApi[getData](this.props.itemId)
             .then(data => {
                this.setState({
                   data,
